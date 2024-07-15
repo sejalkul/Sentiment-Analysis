@@ -1,0 +1,46 @@
+ {% include "header.html" %}
+        <div class="main-panel">
+          <div class="content-wrapper">
+          	<h3>Trending Hastags on #Elect</h3>
+          	<div id="hashtags"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ {% include "footer.html" %}
+<script type="text/javascript">
+    $.ajax({
+        url:"/gettweethash", 
+        type: "post", 
+        dataType: 'json',
+        data: {},
+        beforeSend: function(){
+            $(".loader").show();
+        },
+        success: function(output){
+           var apdata = '<div class="row">'
+           apdata +=  `<div onclick="analyse('Swacch')" class="col-md-2" style="margin:10px"><button class="btn bg-white p-3 d-flex justify-content-center" type="button" id="dropdownMenuButton1" style="width:100%; color: red;font-size:medium">#swacchbharat</button></div>;`
+           
+           apdata +=  `<div onclick="analyse('Beti')" class="col-md-2" style="margin:10px"><button class="btn bg-white p-3 d-flex justify-content-center" type="button" id="dropdownMenuButton1" style="width:100%; color: green;font-size:medium">#betibachao</button></div>;`
+           
+            apdata +=  `<div onclick="analyse('Make')" class="col-md-2" style="margin:10px"><button class="btn bg-white p-3 d-flex justify-content-center" type="button" id="dropdownMenuButton1" style="width:100%; color: blue;font-size:medium">#makeinindia</button></div>;`
+
+           for(i=0; i<output.length; i++){ 
+                var colors = ["#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#e59a03", "#3ba09a"]; 
+                var color = colors[i % colors.length]; 
+                apdata += `<div onclick="analyse('${output[i]}')" class="col-md-2" style="margin:10px"><button class="btn bg-white p-3 d-flex justify-content-center" type="button" id="dropdownMenuButton1" style="width:100%; color: ${color};font-size:medium">${output[i]}</button></div>`;
+
+           }
+           apdata += '</div>'
+           $("#hashtags").html(apdata)
+           $(".loader").hide();
+        }
+    });
+
+    function analyse(data){
+    	data = data.substring(1)
+    	location.href='http://localhost:5000/tweetanalytics?hashtag='+data
+    }
+</script>

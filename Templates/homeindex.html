@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Elect Plus</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='homepage/css/style.css') }}">
+</head>
+<style type="text/css">
+  .templateux-navbar .templateux-logo {
+    margin-top: 0px !important;
+  }
+</style>
+<body>
+
+  <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+    <header class="templateux-navbar" role="banner">
+      <div class="container"  data-aos="fade-down">
+        <div class="row">
+           <div class="col-3 templateux-logo" style="display: flex;
+    background: #0000007d;
+    align-content: center;
+    align-items: center;">
+            <a href="#" class="animsition-link"><b>Elect Plus</b></a>
+          </div>
+          <nav class="col-9 site-nav" style="background: #0000007d;">
+            <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button> 
+            <ul class="sf-menu templateux-menu d-none d-md-block">
+              <li class="active">
+                <a href="{{url_for('main')}}" class="animsition-link">Home</a>
+              </li>
+              <li><a href="{{url_for('about')}}" class="animsition-link">About</a></li>
+              <li><a href="{{url_for('services')}}" class="animsition-link">Services</a></li>
+              <li><a href="{{url_for('contact')}}" class="animsition-link">Contact</a></li>
+              <li><a href="{{url_for('registeruser')}}" class="animsition-link">Register</a></li>
+              <li><a href="{{url_for('login')}}" class="animsition-link">Login</a></li>
+            </ul> 
+          </nav> 
+        </div> 
+      </div> 
+    </header> 
+    
+<div class="templateux-cover" style="background-image: url({{ url_for('static', filename='images/cam.jpg') }}); background-position: top left;">
+      <div class="container">
+        <div class="row align-items-lg-center">
+          <div class="col-lg-6 order-lg-1">
+            <h1 class="heading mb-3 text-white" data-aos="fade-up">We Are Your Partners in <strong>Your Political Analysis</strong></h1>
+            <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">A strong election campaign analysis system with large community</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="templateux-section pt-0 pb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 templateux-overlap">
+            <div class="row">
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="{{ url_for('static', filename='homepage/images/flaticon/svg/001-consultation.svg') }}" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">Real Time Tweet Collection</h3>
+                    <p>We utilize cutting-edge algorithms to collect and analyze tweets in real-time, capturing the pulse of public opinion surrounding election campaigns.</p>
+                  </div>
+                </div>              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="{{ url_for('static', filename='homepage/images/flaticon/svg/002-discussion.svg') }}" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">Sentimental Analysis</h3>
+                    <p>Our sophisticated sentiment analysis models classify tweets into positive, negative, or neutral categories, providing invaluable insights into the overall sentiment towards specific campaign topics or candidates.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="800">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="{{ url_for('static', filename='homepage/images/flaticon/svg/003-turnover.svg') }}" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">Result Analysis</h3>
+                    <p>We identify and analyze trending topics and hashtags related to election campaigns, enabling stakeholders to understand emerging narratives and gauge public interest in key issues.</p>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .templateux-section -->
+
+    <div class="templateux-section">
+
+      <div class="container"  data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-7">
+            <h2 class="mb-5">Our Application</h2>
+            <div class="owl-carousel wide-slider">
+              <div class="item">
+                <img src="{{ url_for('static', filename='homepage/images/pol.jpg') }}" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+              <div class="item">
+                <img src="{{ url_for('static', filename='homepage/images/pol1.jpg') }}" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+              <div class="item">
+                <img src="{{ url_for('static', filename='homepage/images/pol2.webp') }}" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+            </div> <!-- .owl-carousel -->
+          </div>
+          <div class="col-lg-5 pl-lg-5">
+            <h2 class="mb-5">Why Us?</h2>
+            <div class="accordion" id="accordionExample">
+
+
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 Mission</a>
+                </h2>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Our mission is to revolutionize the way election campaigns are understood and analyzed. We aim to provide accurate insights into public sentiment surrounding election campaigns through advanced data collection and analysis techniques. By empowering stakeholders with actionable intelligence, we strive to foster transparency, enhance decision-making, and ultimately strengthen democratic processes worldwide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Vision
+                  </a>
+                </h2>
+                
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Our vision is to become the global leader in election campaign analysis, recognized for our innovative technologies and unparalleled accuracy in sentiment prediction. We envision a future where our insights empower political actors, media organizations, and citizens alike to engage in informed discussions, shape public discourse, and drive positive change in societies.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Services
+                  </a>
+                </h2>
+                
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Our services encompass real-time tweet collection and sentiment analysis, trend identification, and predictive analytics for campaign trajectory. We offer customized reporting, expert consulting, and a commitment to continuous innovation in data analysis techniques.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .templateux-section -->
+
+   
+
+
+</div> <!-- .templateux-section -->
+
+
+
+</div> 
+<script src="{{ url_for('static', filename='homepage/js/scripts-all.js') }}"></script>
+<script src="{{ url_for('static', filename='homepage/js/main.js') }}"></script>
+<script type="text/javascript">
+  
+</script>
+
+</body>
+</html>

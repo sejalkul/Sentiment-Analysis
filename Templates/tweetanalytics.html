@@ -1,0 +1,98 @@
+ {% include "header.html" %}
+        <div class="main-panel">
+          <div class="content-wrapper">
+          	<h3>Related results for hashtag #<span id="candid"></span></h3>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                  <div class="card-body">
+                    <div class="card-title">Analytics:</div>
+                      <center><img src="" id="predictionchart" style="height: auto; width: 50%;"></center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          	<div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                  <div class="card-body">
+                    <div class="card-title">Total Record(s):<span id='count'></span></div>
+                    </p>
+                    <style type="text/css">
+                                           table {
+                            table-layout: fixed;
+                            width: 100%; 
+                        }
+                        th:nth-child(2),
+                        td:nth-child(2) {
+                            overflow-wrap: break-word;
+                            word-wrap: break-word;
+                        }
+                    </style>
+                    <table class="table" style="table-layout: auto !important;">
+                      <thead>
+                        <tr>
+                          <th>S. No</th>
+                          <th >Tweet</th>
+                          <th>Sentiment</th>
+                        </tr>
+                      </thead>
+                      <tbody id="results">
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ {% include "footer.html" %}
+<script type="text/javascript">
+
+    function getUrlParameter(name) {
+        var queryString = window.location.search;
+        var searchParams = new URLSearchParams(queryString);
+        return searchParams.get(name);
+    }
+
+    var search = getUrlParameter('hashtag');
+    $("#candid").html(search)
+
+    $.ajax({
+        url:"/getreleventtweet", 
+        type: "post", 
+        dataType: 'json',
+        data: {"searchdata":search, "types":"Hashtag"},
+        beforeSend: function(){
+           $(".loader").show(); 
+        },
+        success: function(output){          
+          apdata = ''
+          $("#count").html(output.tweet.length)
+          for(i=0; i<output.tweet.length; i++){
+            if (output["tweet"][i]["prediction"] == 'Positive'){
+              var sentiment =  `<label class="badge badge-success">Positive</label>`
+            }else if (output["tweet"][i]["prediction"] == 'Negative'){
+              var sentiment =  `<label class="badge badge-danger">Negative</label>`
+            }else{
+              var sentiment =  `<label class="badge badge-warning">Neutral</label>`
+            }
+            apdata += `<tr><td style="width:10%">`+(i+1)+`</td><td style="word-wrap: break-word; width:60%; text-align:justify; white-space: normal !important;">`+output["tweet"][i]["tweet_content"]+`</td><td>`+sentiment+`</td><tr>`
+          } 
+
+          setTimeout(function() {
+              var src = 'http://localhost:5000/static/'+output["filename"]
+              $("#predictionchart").attr("src", src);
+          }, 1000);
+
+          $("#results").append(apdata)
+          $(".loader").hide();
+
+        }
+    });
+</script>

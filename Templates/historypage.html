@@ -1,0 +1,79 @@
+ {% include "header.html" %}
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <h3>My History</h3>
+          
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                  <div class="card-body">
+                    <div class="card-title">Total Record(s):<span id='count'></span></div>
+                    </p>
+                    <style type="text/css">
+                                           table {
+                            table-layout: fixed;
+                            width: 100%; 
+                        }
+                        th:nth-child(2),
+                        td:nth-child(2) {
+                            overflow-wrap: break-word;
+                            word-wrap: break-word;
+                        }
+                    </style>
+                    <table class="table" style="table-layout: auto !important;">
+                      <thead>
+                        <tr>
+                          <th>S. No</th>
+                          <th >Search Data</th>
+                          <th>Count</th>
+                          <th>Searched By</th>
+                          <th>Created At</th>
+                        </tr>
+                      </thead>
+                      <tbody id="results">
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ {% include "footer.html" %}
+<script type="text/javascript">
+
+    $.ajax({
+        url:"/historydata", 
+        type: "post", 
+        dataType: 'json',
+        data: {},
+        beforeSend: function(){
+             $(".loader").show();
+        },
+        success: function(output){          
+          apdata = ''
+          $("#count").html(output.length)
+          for(i=0; i<output.length; i++){
+            sentiment = `<td><span class='btn btn-info' onclick='search("`+output[i]["searchdata"]+`")'>Search</span></td>`
+            apdata += `<tr><td style="width:10%">`+(i+1)+`</td><td >`+output[i]["searchdata"]+`</td><td>`+output[i]["count"]+`</td><td>`+output[i]["from"]+`</td><td>`+output[i]["createdat"]+`</td><td>`+sentiment+`</td><tr>`
+          } 
+
+          setTimeout(function() {
+              var src = 'http://localhost:5000/static/'+output["filename"]
+              $("#predictionchart").attr("src", src);
+          }, 1000);
+
+          $("#results").append(apdata)
+           $(".loader").hide();
+        }
+    });
+
+    function search(data){
+      location.href='http://localhost:5000/tweetanalytics?hashtag='+data
+    }
+</script>

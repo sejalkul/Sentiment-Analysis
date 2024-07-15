@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Elect Plus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <style type="text/css">
+       .loader{
+            position:fixed;
+            width:100%;
+            left:0;right:0;top:0;bottom:0;
+            background-color: rgba(255,255,255,0.7);
+            z-index:9999;
+            display:none;
+        }
+
+        @-webkit-keyframes spin {
+          from {-webkit-transform:rotate(0deg);}
+          to {-webkit-transform:rotate(360deg);}
+        }
+
+        @keyframes spin {
+          from {transform:rotate(0deg);}
+          to {transform:rotate(360deg);}
+        }
+
+        .loader::after {
+            content:'';
+            display:block;
+            position:absolute;
+            left:48%;top:40%;
+            width:40px;
+            height:40px;
+            border-style:solid;
+            border-color:#a461d8;
+            border-top-color:transparent;
+            border-width: 4px;
+            border-radius:50%;
+            -webkit-animation: spin .8s linear infinite;
+            animation: spin .8s linear infinite;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <h2 style="color: white">Elect Plus</h2>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          
+          <ul class="navbar-nav navbar-nav-right">
+            
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                </div>
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black">{{ username }}</p>
+                </div>
+              </a>
+              
+            </li>
+           
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-category">Main</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('tweetpage')}}">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Tweet Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('liveanalysis')}}">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Live Analysis</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('searchdata')}}">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Search</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('historypage')}}">
+                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                <span class="menu-title">My History</span>
+              </a>
+            </li>
+            
+            
+            
+            <li class="nav-item sidebar-user-actions">
+              <div class="user-details">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="d-flex align-items-center">
+                      <div class="sidebar-profile-img">
+                      </div>
+                      <div class="sidebar-profile-text">
+                        <p class="mb-1">Hi, {{ username }} !</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="nav-item sidebar-user-actions">
+              <div class="sidebar-user-menu">
+                <a href="{{url_for('main')}}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                  <span class="menu-title">Log Out</span></a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
